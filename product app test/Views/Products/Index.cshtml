@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Product>
+
+@{ 
+    ViewData["title"] = "Products";
+}
+
+<h2>Products</h2>
+<a class="btn btn-primary" asp-action="Create">add product</a>
+<div>
+   @if(!Model.Any())
+            {
+                <div class="alert alert-warning" role="alert" >
+                    <p> no product found</p>
+                </div>
+            }
+   else
+            {
+                <ul>
+                    @foreach(var item in Model)
+                {
+                    <li>@item.item_name</li>
+                }
+                </ul>
+            }
+</div>

@@ -1,0 +1,12 @@
+﻿@model ProductForm
+
+@{
+    ViewData["title"] = "Products";
+}
+
+
+<h2>add product</h2>
+<div class="col-6">
+    <label class="text-danger" asp-for="item_name"></label>
+    <input class="form-control" type="text" asp-for="item_name" />
+</div>
