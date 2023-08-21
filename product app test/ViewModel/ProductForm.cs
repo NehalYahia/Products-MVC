@@ -11,11 +11,12 @@ namespace product_app_test.ViewModel
     {
         [Display(Name =" product name"),Required,StringLength(200)]
             public string item_name { get; set; }
-        [Display(Name = " product image")]
+        [Display(Name = "select product image")]
             public Byte[] item_img { get; set; }
 
         [Display(Name = " product discription"), Required, StringLength(2500)]
             public string item_dec { get; set; }
+        [Required]
             public int price { get; set; }
         [Display(Name = " category name"), Required]
             public Byte ctg_id { get; set; }

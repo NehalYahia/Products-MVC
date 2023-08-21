@@ -4,9 +4,73 @@
     ViewData["title"] = "Products";
 }
 
+<div class="container-fluid">
+        <h2 >add product</h2>
 
-<h2>add product</h2>
-<div class="col-6">
-    <label class="text-danger" asp-for="item_name"></label>
-    <input class="form-control" type="text" asp-for="item_name" />
+        <form method="post" class="col-7">
+            <div class="row">
+                <div class="col-8  my-5">
+                    <label class="text-success" asp-for="item_name"></label>
+                    <input class="form-control" type="text" asp-for="item_name" />
+                    <span class= "text-danger" asp-validation-for="item_name"></span>
+                </div>
+                <div class="col-8  my-5">
+                    <label class="table-success" asp-for="price"></label>
+                    <input class="form-control" type="number" asp-for="price" />
+                    <span class="text-danger" asp-validation-for="price"></span>
+                </div>
+                <div class="col-8  my-5">
+                    <label class="table-success" asp-for="ctg_id"></label>
+                    <select class="form-control" asp-for="ctg_id" asp-items="@(new SelectList(Model.category, "ctg_id", " ctg_name"))">
+                        <option>
+                        </option>
+                    </select>
+                </div>
+                <div class="col-8  my-5">
+                    <label class="table-success" asp-for="item_dec"></label>
+                    <textarea class="form-control" asp-for="item_dec"></textarea>
+                    <span class="text-danger" asp-validation-for="item_dec"></span>
+                </div>
+                <div class="col-6 my-5">
+                    <label class="table-success" asp-for="item_img"></label>
+                    <input class="form-control" type="file" asp-for="item_img" accept="image/*" />
+                </div>
+                <div class="col-6 bg-danger">
+                    <div class="d-none" id="image-container">
+                        <img src="" asp-for="item_img" class="img-thumbnail" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    add
+                </button>
+                <a asp-action="index" class="btn btn-outline-secondary">
+                    cansel
+                </a>
+            </div>
+        </form>
+        
+   
 </div>
+
+@section scripts{
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");  // client validation script or jQuery validation script   c#
+}
+    <script>
+        $(document).ready(function () {
+            $('#item_img').on('change', function () {
+                var selectedImg = $(this).val().split('\\').pop();
+                $(this).siblings('label').text(selectedImg);
+
+                var imageContainer = $('#image-container');
+                var image = Window.URL.createObjectURL(this.files[0]);
+
+                imageContainer.removeClass('d-none');
+                imageContainer.find().attr('src', image);
+                console.log(image);
+            })
+        });
+
+    </script>
+}
+
