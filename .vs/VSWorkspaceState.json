@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\product app test",
+    "\\product app test\\Models"
   ],
-  "SelectedNode": "\\product app test.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -14,6 +14,10 @@ namespace product_app_test.Models
         public string item_dec { get; set; }
         public int price { get; set; }
         public Byte ctg_id { get; set; }
-        public Category category { get; set; }   // navigation property
+        public Category category { get; set; }   // navigation propert
+        public int Year { get; set; }
+        public double Rate { get; set; }
+
+
     }
 }

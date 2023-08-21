@@ -1,0 +1,96 @@
+﻿@model ProductViewModel
+
+@{
+    ViewData["title"] = "Products";
+}
+
+<div class="container-fluid">
+    <h2>add  @(Model.item_id > 0 ? "Edit" : "Create") product</h2>
+    <div class="row">
+        <form method="post" class="col-7" asp-action="@(Model.item_id > 0 ? "Edit" : "Create")" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="text-success" asp-for="item_name"></label>
+                <input class="form-control" type="text" asp-for="item_name" />
+                <span class="text-danger" asp-validation-for="item_name"></span>
+            </div>
+            <div class="form-group">
+                <label class="text-success" asp-for="price"></label>
+                <input class="form-control" type="number" asp-for="price" value="@(Model.price > 0 ? Model.price : string.Empty )" />
+                <span class="text-danger" asp-validation-for="price"></span>
+            </div>
+            <div class="form-group">
+                <label class="text-success" asp-for="Rate"></label>
+                <input type="number" class="form-control" asp-for="Rate" value="@(Model.Rate > 0 ? Model.Rate : string.Empty)" />
+                <span asp-validation-for="Rate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="text-success" asp-for="ctg_id"></label>
+                <select class="form-control" asp-for="ctg_id" asp-items="@(new SelectList(Model.categories , "ctg_id", "ctg_name"))">
+                    <option></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="text-success" asp-for="Year"></label>
+                <input type="number" class="form-control" asp-for="Year" value="@(Model.Year > 0 ? Model.Year : string.Empty)" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="text-success" asp-for="item_dec"></label>
+                <textarea class="form-control" asp-for="item_dec"></textarea>
+                <span class="text-danger" asp-validation-for="item_dec"></span>
+            </div>
+            <div class="form-group">
+                <label class="text-success" asp-for="item_img"></label>
+                <input class="form-control" type="file" asp-for="item_img" />
+                <span class="text-danger" asp-validation-for="item_img"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                add
+            </button>
+            <a asp-action="index" class="btn btn-outline-secondary">
+                cansel
+            </a>
+
+        </form>
+
+        <div class="col-5">
+            <div class="d-none" id="image-container">
+                <img src="" asp-for="item_img" class="img-thumbnail" />
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");  // client validation script or jQuery validation script   c#
+}
+    <script>
+        $(document).ready(function () {
+            $('#item_img').on('change', function () {
+                var selectedImg = $(this).val().split('\\').pop();
+                $(this).siblings('label').text(selectedImg);
+
+                var imageContainer = $('#image-container');
+                var image =URL.createObjectURL(this.files[0]);
+
+                imageContainer.removeClass('d-none');
+                imageContainer.find('img').attr('src', image);
+
+
+                $('#Year').datepicker({
+                    format: 'yyyy',
+                    viewMode: 'years',
+                    minViewMode: 'years',
+                    autoclose: true,
+                    startDate: new Date('1990-01-01'),
+                    endDate: new Date()
+                });
+            })
+        });
+
+    </script>
+}
+

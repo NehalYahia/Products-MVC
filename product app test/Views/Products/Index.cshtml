@@ -1,25 +1,79 @@
 ﻿@model IEnumerable<Product>
 
-@{ 
+@{
     ViewData["title"] = "Products";
 }
 
 <h2>Products</h2>
 <a class="btn btn-primary" asp-action="Create">add product</a>
 <div>
-   @if(!Model.Any())
-            {
-                <div class="alert alert-warning" role="alert" >
-                    <p> no product found</p>
-                </div>
-            }
-   else
-            {
-                <ul>
-                    @foreach(var item in Model)
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            <p> no product found</p>
+        </div>
+    }
+    else
+
+    {
+        <div class="container-fluid">
+            <div class="row">
+                @foreach (var item in Model)
                 {
-                    <li>@item.item_name</li>
+                    <div class="col-12">
+                        <div class="row ">
+                            <div class="col-4 item_img" style="background-image:url(data:image\/*;base64,@Convert.ToBase64String(item.item_img)"></div>
+                            <div class="col-8">
+                                <p>@item.item_name</p>
+                                <h1 [innerHTML]="title ? title : '<i>Title not set</i>'"></h1>
+
+                                <p>
+                                    @(item.item_dec.Length >7 ? $"{item.item_dec.Substring(0,7)}.... ":item.item_dec)
+                                    <a asp-action="Create">
+                                        @(item.item_dec.Length >7 ?"link":"")
+                                    </a>
+                                    <span id="gg" onclick="see_more_text()">
+                                        see
+                                    </span>
+                                </p>
+                                <p>@item.price $</p>
+                                <a class="btn btn-secondary" asp-action="Detailes" asp-route-id="@item.item_id"> Detailes </a>
+                                <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.item_id">Edit</a>
+                                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.item_id">Delete</a>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
                 }
-                </ul>
-            }
+            </div>
+
+        </div>
+    }
+
+
 </div>
+
+
+@section scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");  // client validation script or jQuery validation script   c#
+    }
+    <script>
+        function see_more_text() {
+           
+        }
+   /*     $(document).ready(function () {
+            $('#gg').on('click', function () {
+                var text = $('#gg').text()
+                     this.Substring(0, text.length);
+        
+            })
+        });
+
+*/
+    </script>
+}

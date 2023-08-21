@@ -201,7 +201,6 @@ C:\Users\nyehia\Documents\GitHub\Products-MVC\product app test\obj\Debug\net5.0\
 C:\Users\nyehia\Documents\GitHub\Products-MVC\product app test\obj\Debug\net5.0\product app test.RazorCoreGenerate.cache
 C:\Users\nyehia\Documents\GitHub\Products-MVC\product app test\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\nyehia\Documents\GitHub\Products-MVC\product app test\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
-C:\Users\nyehia\Documents\GitHub\Products-MVC\product app test\obj\Debug\net5.0\Razor\Views\Products\Create.cshtml.g.cs
 C:\Users\nyehia\Documents\GitHub\Products-MVC\product app test\obj\Debug\net5.0\Razor\Views\Products\Index.cshtml.g.cs
 C:\Users\nyehia\Documents\GitHub\Products-MVC\product app test\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\nyehia\Documents\GitHub\Products-MVC\product app test\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -216,3 +215,4 @@ C:\Users\nyehia\Documents\GitHub\Products-MVC\product app test\obj\Debug\net5.0\
 C:\Users\nyehia\Documents\GitHub\Products-MVC\product app test\obj\Debug\net5.0\ref\product app test.dll
 C:\Users\nyehia\Documents\GitHub\Products-MVC\product app test\obj\Debug\net5.0\product app test.pdb
 C:\Users\nyehia\Documents\GitHub\Products-MVC\product app test\obj\Debug\net5.0\product app test.genruntimeconfig.cache
+C:\Users\nyehia\Documents\GitHub\Products-MVC\product app test\obj\Debug\net5.0\Razor\Views\Products\ProducForm.cshtml.g.cs

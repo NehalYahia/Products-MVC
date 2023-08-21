@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace product_app_test.ViewModel
 {
-    public class ProductForm
+    public class ProductViewModel
     {
+        public int item_id { get; set; }
         [Display(Name =" product name"),Required,StringLength(200)]
             public string item_name { get; set; }
         [Display(Name = "select product image")]
@@ -20,7 +21,10 @@ namespace product_app_test.ViewModel
             public int price { get; set; }
         [Display(Name = " category name"), Required]
             public Byte ctg_id { get; set; }
-            public IEnumerable<Category> category { get; set; }
+            public IEnumerable<Category> categories { get; set; }
+            public int Year { get; set; }
+        [Range(1, 10)]
+            public double Rate { get; set; }
 
     }
 }
